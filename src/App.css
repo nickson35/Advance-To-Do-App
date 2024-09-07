@@ -1,0 +1,321 @@
+@import "index.css" layer(default-styles);
+
+.wrapper {
+  width: min(700px, 100%);
+  margin-inline: auto;
+  margin-block-start: 5rem;
+  background-color: var(--color-primary);
+}
+
+.todo-container {
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  background-color: rgb(42, 43, 49);
+  padding: 2rem;
+  font-size: var(--h1-font-size);
+}
+
+.todo-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--color-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.356);
+  color: white;
+}
+
+.nav-btn {
+  outline: transparent;
+  border: transparent;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: border-block 100ms linear;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: transform 100ms linear;
+  }
+
+  &:hover,
+  &:focus-within {
+    border-block: 1px solid white;
+  }
+
+  &:hover::after {
+    transform: scale(0);
+  }
+}
+
+h2.schedule-day {
+  margin-inline: 4rem;
+  font-size: calc(var(--h1-font-size) - 4px);
+}
+
+.side-nav {
+  background-color: inherit;
+  position: absolute;
+  top: 76px;
+  left: 0;
+  z-index: 1;
+  max-width: 360px;
+  width: 0%;
+  min-height: fit-content;
+  overflow-x: hidden;
+  transition: width 200ms linear;
+  outline: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidenav-container {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+}
+
+.user-space {
+  outline: 1px solid rgba(255, 255, 255, 0.3);
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 7rem;
+
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid white;
+    text-align: center;
+  }
+
+  p {
+    font-size: calc(var(--h1-font-size) - 4px);
+    text-wrap: nowrap;
+  }
+}
+
+.side-nav-btn-container {
+  li {
+    display: block;
+    padding-block: 0.5rem;
+    padding-inline: 8rem 1.5rem;
+
+    &:first-child {
+      margin-block-start: 2rem;
+    }
+
+    &:last-child {
+      margin-block-end: 4rem;
+    }
+
+    button {
+      font-size: calc(var(--h1-font-size) - 6px);
+      text-wrap: nowrap;
+      text-align: left;
+      text-transform: capitalize;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid transparent;
+      outline: 1px solid transparent;
+    }
+
+    button:hover,
+    button:focus-within {
+      text-decoration: underline;
+      text-underline-offset: 0.5rem;
+    }
+  }
+}
+
+.todo-list-item-container {
+  --_priority-colors-primary: rgb(247, 61, 61);
+  --_priority-colors-secondary: rgb(247, 138, 50);
+  --_priority-colors-tertiary: rgb(117, 117, 117);
+  --_priority-colors-complete: rgb(99, 177, 47);
+
+  height: 60vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.todo-list-items {
+  width: min(520px, 90%);
+  margin-inline: auto;
+  margin-block: 1rem;
+
+  *::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+p.day {
+  padding-block-end: 0.8rem;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  font-style: oblique;
+}
+
+p.todo-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1rem;
+  background-color: var(--_priority-colors-primary);
+  border-radius: 10px;
+
+  .title {
+    flex-basis: 98%;
+    word-break: break-all;
+    word-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  button {
+    background-color: inherit;
+    outline: transparent;
+    border: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}
+
+.status-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+
+  button {
+    background-color: transparent;
+    font-weight: bolder;
+    border: transparent;
+    outline: transparent;
+    cursor: pointer;
+    transition: color 100ms linear;
+  }
+}
+
+button.delete {
+  &:hover,
+  &:focus-within {
+    color: var(--_priority-colors-complete);
+  }
+}
+
+.detail-show-btn {
+  background-color: transparent;
+  border: 1px solid transparent;
+  outline: 1px solid transparent;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.todo-detail {
+  overflow-y: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  border-radius: 5px;
+
+  .detail {
+    word-wrap: break-word;
+    word-break: break-all;
+    text-wrap: pretty;
+    text-align: center;
+    padding-block: 1rem;
+  }
+}
+
+.task-form-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.todo-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  outline: transparent;
+  border: transparent;
+
+  &:hover,
+  &:focus-within {
+    outline: 1px solid var(--color-secondary);
+    outline-offset: 4px;
+  }
+}
+
+.form-container {
+  position: relative;
+  position: absolute;
+  z-index: 2;
+  top: 0%;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: var(--color-primary);
+  overflow-x: hidden;
+  transition: width 200ms linear;
+  transform-origin: left;
+  box-shadow: 5px 0px 0px 0px rgba(255, 255, 255, 0.2);
+}
+
+form {
+  width: min(500px, 95%);
+  display: grid;
+  gap: 2rem;
+  margin-inline: auto;
+  translate: 0 40%;
+
+  input,
+  select,
+  textarea {
+    padding: 1rem 1.5rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    outline: 1px solid white;
+    border: 2px solid transparent;
+    transition: border 100ms linear;
+
+    &:hover,
+    &:focus-within {
+      border: 2px solid white;
+    }
+  }
+  button {
+    padding-block: 0.5rem;
+    text-align: center;
+    background-color: white;
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    outline: 1px solid transparent;
+    transition: box-shadow 100ms ease-in-out;
+
+    &:hover,
+    &:focus-within {
+      box-shadow: inset -2px 2px 0px 1px var(--color-primary),
+        inset 2px -2px 0px 1px var(--color-primary);
+    }
+  }
+}
